@@ -17,7 +17,7 @@ namespace ValTechWebSite.Tests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.2.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class CheckHomePageFeature : Xunit.IClassFixture<CheckHomePageFeature.FixtureData>, System.IDisposable
+    public partial class BasicWebTestsFeature : Xunit.IClassFixture<BasicWebTestsFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -27,7 +27,7 @@ namespace ValTechWebSite.Tests
 #line 1 "Check HomePage.feature"
 #line hidden
         
-        public CheckHomePageFeature(CheckHomePageFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public BasicWebTestsFeature(BasicWebTestsFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -36,8 +36,8 @@ namespace ValTechWebSite.Tests
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Check HomePage", "\tIn order to check that I am have the latest information\r\n\tAs a user\r\n\tI want to " +
-                    "be able to see the latest news", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Basic Web Tests", "\tAs a user who blogs on the website\r\n\tI want to be able to see the all the recent" +
+                    " blogs \r\n\tAnd the other pages", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -72,20 +72,55 @@ namespace ValTechWebSite.Tests
             this.ScenarioTearDown();
         }
         
-        [Xunit.FactAttribute(DisplayName="Show that the latest news is displayed")]
-        [Xunit.TraitAttribute("FeatureTitle", "Check HomePage")]
-        [Xunit.TraitAttribute("Description", "Show that the latest news is displayed")]
+        [Xunit.FactAttribute(DisplayName="Show that the recent blogs are displayed")]
+        [Xunit.TraitAttribute("FeatureTitle", "Basic Web Tests")]
+        [Xunit.TraitAttribute("Description", "Show that the recent blogs are displayed")]
         [Xunit.TraitAttribute("Category", "mytag")]
-        public virtual void ShowThatTheLatestNewsIsDisplayed()
+        public virtual void ShowThatTheRecentBlogsAreDisplayed()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show that the latest news is displayed", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show that the recent blogs are displayed", new string[] {
                         "mytag"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.Given("I am on the hompage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 9
- testRunner.Then("the latest news section is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the recent blogs section is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.TheoryAttribute(DisplayName="Show that the ABOUT, SERVICES and WORK pages are showing their titles correctly")]
+        [Xunit.TraitAttribute("FeatureTitle", "Basic Web Tests")]
+        [Xunit.TraitAttribute("Description", "Show that the ABOUT, SERVICES and WORK pages are showing their titles correctly")]
+        [Xunit.InlineDataAttribute("About", new string[0])]
+        [Xunit.InlineDataAttribute("Services", new string[0])]
+        [Xunit.InlineDataAttribute("Work", new string[0])]
+        public virtual void ShowThatTheABOUTSERVICESAndWORKPagesAreShowingTheirTitlesCorrectly(string pageName, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show that the ABOUT, SERVICES and WORK pages are showing their titles correctly", exampleTags);
+#line 12
+this.ScenarioSetup(scenarioInfo);
+#line 13
+ testRunner.Given(string.Format("I am on the {0} page", pageName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 14
+ testRunner.Then(string.Format("the page name {0} is displayed", pageName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.FactAttribute(DisplayName="Show the total number offices")]
+        [Xunit.TraitAttribute("FeatureTitle", "Basic Web Tests")]
+        [Xunit.TraitAttribute("Description", "Show the total number offices")]
+        public virtual void ShowTheTotalNumberOffices()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Show the total number offices", ((string[])(null)));
+#line 22
+this.ScenarioSetup(scenarioInfo);
+#line 23
+ testRunner.Given("I am on the Contact Us page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 24
+ testRunner.Then("the number offices is shown in the output display", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -97,12 +132,12 @@ this.ScenarioSetup(scenarioInfo);
             
             public FixtureData()
             {
-                CheckHomePageFeature.FeatureSetup();
+                BasicWebTestsFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                CheckHomePageFeature.FeatureTearDown();
+                BasicWebTestsFeature.FeatureTearDown();
             }
         }
     }
